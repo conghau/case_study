@@ -55,13 +55,12 @@ class Customer implements CustomerInterface {
 }
 
 class UserToCustomer implements CustomerInterface {
-  private $user;
   private $lname;
   private $fname;
   private $name;
 
   public function __construct(User $user) {
-    $this->user = $user;
+//    $this->user = $user;
     $this->name = $user->getName();
     $tmp = explode(" ", $this->name);
     $this->setFName($tmp[0]);
@@ -87,5 +86,6 @@ class UserToCustomer implements CustomerInterface {
 
 $user = new User("Cong Hau");
 $adapter = new UserToCustomer($user);
-echo "FirstName: " . $adapter->getFName();
-echo " LastName: " . $adapter->getLName();
+echo "User -> Name: {$user->getName()}";
+echo "<br>";
+echo "Customer-> FirstName: {" . $adapter->getFName()."} LastName: {" . $adapter->getLName(). '}';
